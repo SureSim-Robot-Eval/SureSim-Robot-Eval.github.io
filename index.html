@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reliable and Scalable Robot Policy Evaluation with Imperfect Simulators</title>
+
+  <!--  =====  FONTS & ICONS  =====  -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="icon" href="./static/icon.png" />
+
+  <!--  =====  CSS  =====  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+  <style>
+    /* --- GLOBAL --- */
+    body{background:#fff;font-family:"Noto Sans",sans-serif;font-size:18px; line-height:1.5;color:#333;}
+    section{padding:2.5rem 0;}
+
+    /* --- SECTION COLORS --- */
+    .section-gray{background:#f7f7f7;}
+
+    /* --- TYPOGRAPHY & LINKS --- */
+    .task-title{margin-bottom:1rem;font-weight:600;}
+    .publication-authors{margin-bottom:1rem;} /* space below authors */
+    .publication-authors a{color:#3273dc;text-decoration:none;white-space:nowrap;}
+    .publication-authors a:hover{text-decoration:underline;}
+
+    /* --- HERO & SPACING TWEAKS --- */
+    .hero{padding-bottom:0.5rem;} /* tighter gap above overview */
+    #overview.section{padding-top:0.75rem;} /* tighter gap below hero */
+    .publication-links{margin-top:1.5rem;margin-bottom:1.5rem;} /* gap between authors/icons & icons/logo */
+    figure.lab-logo{margin-top:1.5rem;} /* gap between icons and Princeton logo */
+    /* #sim-robot.section{padding-bottom:0.1rem;} gap above simulation section */
+    #bibtex.section-{padding-top:0rem;} /* gap above BibTeX section */
+
+    /* --- SLICK ARROWS --- */
+    .slick-prev:before,.slick-next:before{color:#3273dc;font-size:32px;}
+
+    /* --- THUMBNAILS --- */
+    .video-thumb{cursor:pointer;border-radius:8px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,0.1);margin:0 8px;}
+    .video-thumb video{width:100%;height:auto;display:block;}
+
+    /* --- STAND‑ALONE VIDEOS --- */
+    .overview-video,.sim-video{width:100%;height:auto;border-radius:0;box-shadow:none;pointer-events:none;}
+
+    /* --- LAYOUT HELPERS --- */
+    .task-block{margin-bottom:3rem;}
+    .task-carousel{margin-top:1rem;}
+
+    /* --- CONTENT WIDTH CONSISTENCY --- */
+    .content-container{max-width:960px;margin:0 auto;}
+
+    /* --- PDF EMBED --- */
+    .pdf-container{margin-top:1.5rem;}
+    .pdf-container object{width:100%;height:600px;border:none;}
+
+    /* --- REAL EXP IMG --- */
+    .real-exp-img{width:100%;height:auto;max-width:100%;}
+    /* --- LINK COLOR (lighter blue, closer to default hyperlinks) --- */
+
+    .publication-authors a:hover{
+      text-decoration:underline;
+    }
+
+    /* --- HERO ↔ OVERVIEW GAP (shrink) --- */
+    .hero{padding-bottom:0rem;}         /* was 0.5rem */
+    #overview.section{padding-top:0rem;}/* was 0.75rem */
+
+    /* --- REAL-ROBOT ↔ SIMULATION GAP (shrink) --- */
+    #real-robot.section{padding-top:2.5rem;} /* default Bulma ≈2.5rem */
+    #real-robot.section{padding-bottom:2.5rem;} /* default Bulma ≈2.5rem */
+    #sim-robot.section {padding-top:2.5rem;}    /* default Bulma ≈2.5rem */
+
+    /* --- SIMULATION ↔ BIBTEX GAP (shrink) --- */
+    #BibTeX.section{padding-top:0.1rem;}        /* tighten above BibTeX */
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO with title & authors ===== -->
+  <section class="hero section">
+    <div class="hero-body">
+      <div class="container is-max-widescreen has-text-centered">
+        <h1 class="title is-2 publication-title">Reliable and Scalable Robot Policy Evaluation with Imperfect Simulators</h1>
+
+        <!-- ===== AUTHORS (three rows, no underscores) ===== -->
+        <div class="is-size-5 publication-authors">
+          <div>
+            <span class="author-block"><a href="https://abadithela.github.io/">Apurva&nbsp;Badithela</a></span>,
+            <span class="author-block"><a href="https://www.linkedin.com/in/david-snyder-a25387bb">David&nbsp;Snyder</a><sup>*</sup></span>,
+            <span class="author-block"><a href="https://lihzha.github.io/">Lihan&nbsp;Zha</a><sup>*</sup></span>,
+            <span class="author-block"><a href="https://www.linkedin.com/in/joseph-m-81785a255/">Joseph&nbsp;Mikhail</a></span>,
+          </div>
+          <div>
+            <span class="author-block"><a href="https://www.anushridixit.com/">Anushri&nbsp;Dixit</a><sup>&dagger</sup></span>,
+            <span class="author-block"><a href="https://www.linkedin.com/in/meokelly">Matthew&nbsp;O'Kelly</a><sup>&dagger</sup></span>,
+            <span class="author-block"><a href="https://irom-lab.princeton.edu/majumdar/">Anirudha&nbsp;Majumdar</a></span>
+          </div>
+        </div>
+        <p>
+          <sup>*</sup> Equal contribution, <sup>&dagger</sup> Equal advising
+        </p>
+        <!-- ===== RESOURCE ICONS ===== -->
+        <div class="publication-links">
+          <a href="static/paper.pdf" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+          </a>
+          <!--
+          <a href="https://arxiv.org/abs/2505.07728" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+          </a>
+          -->
+          <a class="external-link button is-normal is-rounded is-dark is-static">
+            <span>Coming Soon</span>
+          </a>
+          <!--
+          <a href="https://github.com/irom-princeton/factored-scaling-curves" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+          </a>
+          <a href="https://youtu.be/unTqsgAVE1o" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="fab fa-youtube"></i></span><span>Video</span>
+          </a>
+          -->
+        </div>
+        
+
+        <!-- ===== LAB LOGO ===== -->
+        <figure class="image is-inline-block lab-logo">
+          <img src="static/irom_princeton.png" alt="IROM Lab logo" style="max-width:600px;">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OVERVIEW ===== -->
+  <!--
+  <section id="overview" class="section">
+    <div class="container is-max-desktop content-container has-text-centered">
+      <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.jpg">
+        <source src="static/videos/overview.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:1rem;">We introduce <strong>Factored&nbsp;Scaling&nbsp;Curves&nbsp;(FSC)</strong>, which model how policy performance scales with data for different environmental factors and can be extrapolated to guide principled data collection.</p>
+    </div>
+  </section>
+  -->
+  <!-- ===== ABSTRACT ===== -->
+  <section id="abstract" class="section">
+    <div class="container is-max-desktop content-container">
+      <h2 class="title is-3 has-text-centered">Abstract</h2>
+      <p>
+        Generalist imitation-learning policies trained on large datasets show great promise for diverse manipulation tasks. However, achieving robust generalization requires data gathered under numerous environmental-factor variations (e.g., camera pose, table height, distractors) &mdash; an exhaustive dataset is prohibitively expensive. We introduce a principled method for deciding <em>what</em> data to collect and <em>how much</em> to collect for each factor by constructing <em>factored scaling curves</em> (FSC), which quantify how policy performance changes as data scales along individual or paired factors. These curves enable targeted data acquisition for the most influential factor combinations within a given budget. Through extensive simulated and real-world experiments &mdash; covering both training-from-scratch and fine-tuning scenarios &mdash; we show that FSC boosts success rates on real-world tasks in new environments by up to&nbsp;26% compared with existing data-collection strategies. Finally, we demonstrate that FSC can efficiently guide data collection using an <em>offline metric</em>, eliminating the need for costly large-scale real-world evaluations.
+      </p>
+      <br>
+      <!--
+      <video id="summary-video" class="shadow" controls preload="metadata" width="100%" poster="static/thumbnails/talk_video.jpg">
+        <source src="static/videos/talk_video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      -->
+    </div>
+  </section>
+
+ 
+  <!-- ===== REAL2Sim EXPERIMENTS ===== -->
+  <section id="real-robot" class="section">
+    <div class="container is-max-desktop content-container">
+      <h2 class="title is-3 has-text-centered">Real2Sim Experiments</h2>
+      <p class="has-text-justified">
+        We evaluate our method on three challenging real-world tasks: Put Mouse in Drawer, Fold Towel, and Put Tomato in Plate. Six environment factors are considered: camera pose, lighting, distractor objects, table texture, object pose, and robot initial pose.
+      </p>
+      <br>
+    </div> 
+  </section>
+
+  <!-- ===== SIm2SIm EXPERIMENTS ===== -->
+  <section id="sim-robot" class="section">
+    <div class="container is-max-desktop content-container">
+      <h2 class="title is-3 has-text-centered">Sim2Sim Experiments</h2>
+      <!-- <p>We evaluate our method on three simulation tasks: Put Tomato in Plate, Peg Insertion and Pull Cube Tool.
+      </p> -->
+      <br>
+  </section>
+
+  <!--
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+        # Put bib citation here
+      </code></pre>
+    </div>
+  </section>
+  -->
+  <br>
+  <center class="is-size-10">
+    The website design was adapted from <a href="https://nerfies.github.io" class="external-link"><span
+        class="dnerf">Nerfies</span></a>.
+  </center>
+  <br>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+    $(function(){
+      // Init carousels (only those still using .task-carousel wrappers)
+      $('.task-carousel').slick({
+        slidesToShow:4,
+        slidesToScroll:1,
+        infinite:false,
+        arrows:true,
+        dots:false,
+        lazyLoad:'ondemand',
+        touchMove:true,
+        responsive:[
+          {breakpoint:1024,settings:{slidesToShow:3}},
+          {breakpoint:768, settings:{slidesToShow:2}},
+          {breakpoint:480, settings:{slidesToShow:1}}
+        ]
+      });
+
+      // Horizontal track‑pad scroll → carousel navigation; let vertical scroll bubble up
+      $('.task-carousel').on('wheel',function(e){
+        const deltaX = e.originalEvent.deltaX;
+        const deltaY = e.originalEvent.deltaY;
+        if(Math.abs(deltaX) > Math.abs(deltaY)){
+          e.preventDefault();
+          $(this).slick(deltaX < 0 ? 'slickPrev' : 'slickNext');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
