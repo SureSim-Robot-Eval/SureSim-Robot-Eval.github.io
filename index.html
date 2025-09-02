@@ -4,7 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Reliable and Scalable Robot Policy Evaluation with Imperfect Simulators</title>
-
+  <!--  =====  MATH  =====  -->
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+    svg: {fontCache: 'global'}
+    };
+  </script>
+  <script id="MathJax-script" async 
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
   <!--  =====  FONTS & ICONS  =====  -->
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
@@ -97,8 +106,8 @@
             <span class="author-block"><a href="https://www.linkedin.com/in/joseph-m-81785a255/">Joseph&nbsp;Mikhail</a></span>,
           </div>
           <div>
-            <span class="author-block"><a href="https://www.linkedin.com/in/meokelly">Matthew&nbsp;O'Kelly</a><sup>&dagger</sup></span>,
-            <span class="author-block"><a href="https://www.anushridixit.com/">Anushri&nbsp;Dixit</a><sup>&dagger</sup></span>,
+            <span class="author-block"><a href="https://www.linkedin.com/in/meokelly">Matthew&nbsp;O'Kelly</a><sup>&dagger;</sup></span>,
+            <span class="author-block"><a href="https://www.anushridixit.com/">Anushri&nbsp;Dixit</a><sup>&dagger;</sup></span>,
             <span class="author-block"><a href="https://irom-lab.princeton.edu/majumdar/">Anirudha&nbsp;Majumdar</a></span>
           </div>
         </div>
@@ -138,6 +147,15 @@
   </section>
 
   <!-- ===== OVERVIEW ===== -->
+  <!-- <section id="overview" class="section">
+    <div class="container is-max-desktop content-container has-text-centered">
+      <video class="overview-image" autoplay loop muted playsinline poster="static/thumbnails/overview.jpg">
+        <source src="static/videos/overview.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:1rem;">We introduce <strong>Factored&nbsp;Scaling&nbsp;Curves&nbsp;(FSC)</strong>, which model how policy performance scales with data for different environmental factors and can be extrapolated to guide principled data collection.</p>
+    </div>
+  </section>  -->
   <!--
   <section id="overview" class="section">
     <div class="container is-max-desktop content-container has-text-centered">
@@ -154,7 +172,7 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Abstract</h2>
       <p>
-        Generalist imitation-learning policies trained on large datasets show great promise for diverse manipulation tasks. However, achieving robust generalization requires data gathered under numerous environmental-factor variations (e.g., camera pose, table height, distractors) &mdash; an exhaustive dataset is prohibitively expensive. We introduce a principled method for deciding <em>what</em> data to collect and <em>how much</em> to collect for each factor by constructing <em>factored scaling curves</em> (FSC), which quantify how policy performance changes as data scales along individual or paired factors. These curves enable targeted data acquisition for the most influential factor combinations within a given budget. Through extensive simulated and real-world experiments &mdash; covering both training-from-scratch and fine-tuning scenarios &mdash; we show that FSC boosts success rates on real-world tasks in new environments by up to&nbsp;26% compared with existing data-collection strategies. Finally, we demonstrate that FSC can efficiently guide data collection using an <em>offline metric</em>, eliminating the need for costly large-scale real-world evaluations.
+        Rapid progress in robot manipulation driven by imitation learning, foundation models, and large-scale datasets has enabled generalization to a wide-range of tasks and environments. However, rigorous evaluation of these policies remains a challenge. Typically in practice, robot policies are often evaluated on a small number of hardware trials without any statistical assurances. We present SureSim, a framework to augment large-scale simulation with relatively small-scale real-world testing to provide reliable inferences on the real-world performance of a policy. Our key idea is to formalize the problem of combining real and simulation evaluations as a prediction-powered inference problem, in which a small number of paired real and simulation evaluations are used to rectify bias in large-scale simulation. We then leverage non-asymptotic mean estimation algorithms to provide confidence intervals on policy performance. Using physics-based simulation, we evaluate both diffusion policy and multi-task fine-tuned \(\pi_0\) on a joint distribution of objects and initial conditions, and find that our approach saves over \(20\%\) of hardware evaluation effort to achieve similar bounds on policy performance. 
       </p>
       <br>
       <!--
@@ -172,7 +190,7 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Real2Sim Experiments</h2>
       <p class="has-text-justified">
-        We evaluate our method on three challenging real-world tasks: Put Mouse in Drawer, Fold Towel, and Put Tomato in Plate. Six environment factors are considered: camera pose, lighting, distractor objects, table texture, object pose, and robot initial pose.
+        Using our framework, we evaluate diffusion policy and a multi-task fine-tuned \(\pi_0\) on a joint distribution of tasks and initial conditions.
       </p>
       <br>
     </div> 
