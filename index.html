@@ -189,11 +189,11 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Problem Formulation</h2>
       <p class="has-text-justified">
-        We consider the mean estimation problem in policy evaluation, where the goal is to estimate the average performance of policy \(\pi\) according to a bounded evaluation metric \(M\) over the environment distribution \(\Denv\). Formally, we define mean policy performance \(\mu^*\) as:
+        We consider the mean estimation problem in policy evaluation, where the goal is to estimate the average performance of policy \(\pi\) according to a bounded evaluation metric \(M\) over the environment distribution \(\mathcal{D}_{\text{env}}\). Formally, we define mean policy performance \(\mu^*\) as:
         \begin{equation}
             \mu^* = \mathbb{E}_{X \sim \mathcal{D}_{\text{env}}} [Y(X)],
         \end{equation}
-        where \(Y(X)=M(X,\pi)\) is the outcome of evaluating policy \(\pi\) in environment \(X\) under metric \(M\). For sampled environments \(X_1, \ldots, X_{n} \stackrel{{iid}}{\sim} \Denv\), the outcomes of real-world policy evaluation according to metric \(M\) are denoted as \(Y_1,\ldots,Y_n\), respectively. We seek a confidence interval \(CI\) such that: 
+        where \(Y(X)=M(X,\pi)\) is the outcome of evaluating policy \(\pi\) in environment \(X\) under metric \(M\). For sampled environments \(X_1, \ldots, X_{n} \stackrel{{iid}}{\sim} \mathcal{D}_{\text{env}}\), the outcomes of real-world policy evaluation according to metric \(M\) are denoted as \(Y_1,\ldots,Y_n\), respectively. We seek a confidence interval \(CI\) such that: 
       \begin{equation}
       \label{eq:guarantee}
       \mathbb{P}_{S_n \sim \mathcal{D}^{n}_{\text{env}}} (\mu^* \in CI) \geq 1 - \alpha,
