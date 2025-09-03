@@ -150,9 +150,9 @@
   <section id="overview" class="section">
     <div class="container is-max-desktop content-container has-text-centered">
       <img src="static/overview.png" alt="Overview Figure" class="overview-image" />
-      <p style="margin-top:1rem;">
+      <figcaption style="margin-top:0.25rem;">
         Our goal is to evaluate a policy by computing bounds on its mean real-world performance on a diverse environment distribution \(\mathcal{D}_{\text{env}}\). We present a framework that augments real-world evaluations with simulation evaluations to provide stronger inferences on real-world policy performance that could otherwise only be obtained by scaling up real-world evaluations.
-      </p>
+      </figcaption>
     </div>
   </section>
 
@@ -189,14 +189,14 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Problem Formulation</h2>
       <p class="has-text-justified">
-        We consider the mean estimation problem in policy evaluation, where the goal is to estimate the policy’s average performance according to a bounded evaluation metric \(M\) over the environment distribution \(\Denv\). Formally, we define mean policy performance \(\mu^*\) as:
+        We consider the mean estimation problem in policy evaluation, where the goal is to estimate the average performance of policy \(\pi\) according to a bounded evaluation metric \(M\) over the environment distribution \(\Denv\). Formally, we define mean policy performance \(\mu^*\) as:
         \begin{equation}
-            \mu^* = \mathbb{E}_{X \sim \Denv} [Y(X)],
+            \mu^* = \mathbb{E}_{X \sim \mathcal{D}_{\text{env}}} [Y(X)],
         \end{equation}
-        where \(Y(X)=M(X,\pi)\) is the outcome of evaluating policy \(\pi\) in environment \(X\) under metric \(M\). For sampled environments \(X_1, \ldots, X_{n} \iidsim \Denv\), the outcomes of real-world policy evaluation according to metric \(M\) are denoted as \(Y_1,\ldots,Y_n\), respectively. We seek a confidence interval \(CI\) such that: 
+        where \(Y(X)=M(X,\pi)\) is the outcome of evaluating policy \(\pi\) in environment \(X\) under metric \(M\). For sampled environments \(X_1, \ldots, X_{n} \stackrel{{iid}}{\sim} \Denv\), the outcomes of real-world policy evaluation according to metric \(M\) are denoted as \(Y_1,\ldots,Y_n\), respectively. We seek a confidence interval \(CI\) such that: 
       \begin{equation}
       \label{eq:guarantee}
-      \Prob_{S_n \sim \mathcal{D}^{n}_{\text{env}}} (\mu^* \in CI) \geq 1 - \alpha,
+      \mathbb{P}_{S_n \sim \mathcal{D}^{n}_{\text{env}}} (\mu^* \in CI) \geq 1 - \alpha,
       \end{equation}
       where the probability measure is defined over the draw of the empirical evaluation sample \(S_n = \{(X_1, Y_1), \ldots , (X_n, Y_n)\}\).
       </p>
