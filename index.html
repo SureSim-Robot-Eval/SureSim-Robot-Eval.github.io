@@ -209,7 +209,18 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Approach: Augmenting Real Tests with Simulation via Prediction Powered Inference</h2>
       <p class="has-text-justified">
+        We study the mean estimation problem, where the goal is to estimate expected performance of a policy \(\pi\) according to a bounded evaluation metric \(M\) over the environment distribution \(\mathcal{D}_{\text{env}}\). 
+        While gold-standard, tackling this problem using only real-world evaluations is often expensive and time-consuming. On the other hand, simulation evaluations are relatively easier to scale, but can be biased, leading to inaccurate estimates of real-world performance.
+        This motivates the central question of our work: <em> Can we make valid inferences on real policy performance by combining a small amount of real evaluations with a large number of simulations?</em>
         
+        <h3>Paired evaluations</h3>
+          <p>We set up a real2sim pipeline to collect a small number of paired evaluations in both real and simulation environments. 
+            This paired dataset allows us to quantify the bias in simulation evaluations and <em>rectify</em> predictions from large-scale simulations.
+            Importantly, the rectifier is related to the correlation between the paired real and simulation evaluations. In a sense, it quantifies the real-simulation gap and provides a lower bound on the advantage (e.g., minimizing confidence interval width, saving hardware evaluations) we can expect from scaling simulation. 
+            If the rectifier variance is smaller than the variance in real evaluations, we can expect to save on real-world evaluations.
+          </p>
+        <h3>Additional simulation evaluations</h3>
+          <p>Relative to the size of the paired data, we collect a large number of additional simulations. </p>
       </p>
       <br>
     </div> 
@@ -239,7 +250,7 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">Acknowledgments</h2>
-        <p>The authors would like to thank Tijana Zrnic, Allen Z. Ren, Anastasios Angelopoulos, and Rachel Luo for insightful discussions. The authors were partially supported by the NSF CAREER Award \(\#2044149\), the Office of Naval Research (N00014-23-1-2148), and the Sloan Fellowship. A. Badithela is supported by the Presidential Postdoctoral Fellowship at Princeton University.
+        <p>The authors would like to thank Tijana Zrnic, Allen Z. Ren, Anastasios Angelopoulos for insightful discussions. The authors were partially supported by the NSF CAREER Award \(\#2044149\), the Office of Naval Research (N00014-23-1-2148), and the Sloan Fellowship. A. Badithela is supported by the Presidential Postdoctoral Fellowship at Princeton University.
         </p>
     </div>
   </section>
