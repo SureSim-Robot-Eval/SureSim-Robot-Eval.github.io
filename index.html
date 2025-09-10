@@ -178,7 +178,7 @@
         We would like to estimate expected performance of a policy \(\pi\) according to a bounded evaluation metric \(M\) over some distribution of tasks and environments \(\mathcal{D}_{\text{env}}\). 
         While gold-standard, tackling this problem using only real-world evaluations is often expensive and time-consuming. On the other hand, simulation evaluations are relatively easier to scale, but can be biased, leading to inaccurate estimates of real-world performance.
       </p>
-      
+
       <p class="has-text-justified mb-5">
       This motivates the central question of our work: <em> Can we make valid inferences on the real-world performance of a policy by combining a small amount of real evaluations with a large number of simulations?</em>
       To answer this question, we present <span class="has-text-weight-bold">SureSim: </span><span class="has-text-weight-bold">S</span>calable and <span class="has-text-weight-bold">R</span>eliable <span class="has-text-weight-bold">E</span>valuation with <span class="has-text-weight-bold">Sim</span>ulation.
@@ -189,10 +189,18 @@
           This paired dataset allows us to quantify the bias in simulation evaluations and <em>rectify</em> predictions from large-scale simulations.
           Importantly, the rectifier is related to the correlation between the paired real and simulation evaluations. In a sense, it quantifies the real-simulation gap and provides a lower bound on the advantage 
           (e.g., minimizing confidence interval width, saving hardware evaluations) we can expect from scaling simulation. If the rectifier variance is smaller than the variance in real evaluations, we can expect to save on real-world evaluations.</p>
-
+          <br>
+          <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/paired_evals.png">
+            <source src="static/videos/paired_evals.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
       <h3 class="title is-4 has-text-centered mt-6">Additional simulation evaluations</h3>
-        <p class="mb-5">Relative to the size of the paired dataset, we collect a large number of additional simulations. By running large-scale simulation tests </p>
-      <br>
+        <p class="mb-5">Relative to the size of the paired dataset, we collect a large number of additional simulations. By running large-scale simulation tests, we can further improve the accuracy of our performance estimates.</p>
+        <br>
+        <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/additional_sim.png">
+          <source src="static/videos/additional_sim.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
     </div> 
   </section>
 
@@ -201,19 +209,24 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Real2Sim Experiments</h2>
       <p class="has-text-justified">
-        Using our framework, we evaluate diffusion policy and a multi-task fine-tuned \(\pi_0\) on a joint distribution of tasks and initial conditions.
+        Using our framework, we evaluate diffusion policy and a multi-task fine-tuned \(\pi_0\) on a joint distribution of tasks and initial conditions. We choose the pick-and-place family of tasks, parameterized by different object types.
       </p>
       <br>
     </div> 
     <div class="container is-max-desktop content-container has-text-centered">
-      <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
+      <!-- <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
         <source src="static/videos/experiment_setup.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> -->
+      <figure style="text-align: center; margin: 20px 0;">
+        <img src="static/thumbnails/experiment_overview.png" alt="Sample photo" width="400" style="border: 2px solid #ccc; border-radius: 8px;">
+        <figcaption style="font-size: 0.9em; color: #555; margin-top: 8px;">
+          Evaluation Setup
+        </figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- ===== SIm2SIm EXPERIMENTS ===== -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">Acknowledgments</h2>
