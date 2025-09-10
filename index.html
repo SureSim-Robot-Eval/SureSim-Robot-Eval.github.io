@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="icon" href="./static/icon.png" />
+  <link rel="icon" href="./static/evalicon.png" />
 
   <!--  =====  CSS  =====  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" />
@@ -215,7 +215,8 @@
         We would like to estimate expected performance of a policy \(\pi\) according to a bounded evaluation metric \(M\) over some distribution of tasks and environments \(\mathcal{D}_{\text{env}}\). 
         While gold-standard, tackling this problem using only real-world evaluations is often expensive and time-consuming. On the other hand, simulation evaluations are relatively easier to scale, but can be biased, leading to inaccurate estimates of real-world performance.
         This motivates the central question of our work: <em> Can we make valid inferences on the real-world performance of a policy by combining a small amount of real evaluations with a large number of simulations?</em>
-        
+        To answer this question, we present <span class="has-text-weight-bold">SureSim: </span><span class="has-text-weight-bold">S</span>calable and <span class="has-text-weight-bold">R</span>eliable <span class="has-text-weight-bold">E</span>valuation with <span class="has-text-weight-bold">Sim</span>ulation.
+
         <h3 class="title is-4 has-text-centered">Paired evaluations</h3>
           <p>We set up a real2sim pipeline to collect a small number of paired evaluations in both real and simulation environments. 
             This paired dataset allows us to quantify the bias in simulation evaluations and <em>rectify</em> predictions from large-scale simulations.
@@ -243,9 +244,7 @@
         <source src="static/videos/experiment_setup.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <p style="margin-top:1rem;">Our goal is to evaluate a policy by computing bounds on its mean real-world performance on a diverse environment distribution \(\mathcal{D}_{\text{env}}\). We present a framework that augments real-world evaluations with simulation evaluations to provide stronger inferences on real-world policy performance that could otherwise only be obtained by scaling up real-world evaluations.</p>
-      <!-- <figcaption style="margin-top:0.25rem;">
-      </figcaption> -->
+      <p style="margin-top:1rem;">Experimental Setup.</p>
     </div>
   </section>
 
@@ -262,7 +261,7 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">Acknowledgments</h2>
-        <p>The authors would like to thank Tijana Zrnic, Allen Z. Ren, Anastasios Angelopoulos for insightful discussions. The authors were partially supported by the NSF CAREER Award \(\#2044149\), the Office of Naval Research (N00014-23-1-2148), and the Sloan Fellowship. A. Badithela is supported by the Presidential Postdoctoral Fellowship at Princeton University.
+        <p>The authors would like to thank Tijana Zrnic, Anastasios Angelopoulos, and Allen Z. Ren for insightful discussions. The authors were partially supported by the NSF CAREER Award \(\#2044149\), the Office of Naval Research (N00014-23-1-2148), and the Sloan Fellowship. A. Badithela is supported by the Presidential Postdoctoral Fellowship at Princeton University.
         </p>
     </div>
   </section>
