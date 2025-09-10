@@ -159,17 +159,6 @@
     </div>
   </section>
 
-  <!--
-  <section id="overview" class="section">
-    <div class="container is-max-desktop content-container has-text-centered">
-      <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.jpg">
-        <source src="static/videos/overview.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <p style="margin-top:1rem;">We introduce <strong>Factored&nbsp;Scaling&nbsp;Curves&nbsp;(FSC)</strong>, which model how policy performance scales with data for different environmental factors and can be extrapolated to guide principled data collection.</p>
-    </div>
-  </section>
-  -->
   <!-- ===== ABSTRACT ===== -->
   <section id="abstract" class="section">
     <div class="container is-max-desktop content-container">
@@ -178,34 +167,8 @@
         Rapid progress in robot manipulation driven by imitation learning, foundation models, and large-scale datasets has enabled generalization to a wide-range of tasks and environments. However, rigorous evaluation of these policies remains a challenge. Typically in practice, robot policies are often evaluated on a small number of hardware trials without any statistical assurances. We present SureSim, a framework to augment large-scale simulation with relatively small-scale real-world testing to provide reliable inferences on the real-world performance of a policy. Our key idea is to formalize the problem of combining real and simulation evaluations as a prediction-powered inference problem, in which a small number of paired real and simulation evaluations are used to rectify bias in large-scale simulation. We then leverage non-asymptotic mean estimation algorithms to provide confidence intervals on policy performance. Using physics-based simulation, we evaluate both diffusion policy and multi-task fine-tuned \(\pi_0\) on a joint distribution of objects and initial conditions, and find that our approach saves over \(20\%\) of hardware evaluation effort to achieve similar bounds on policy performance. 
       </p>
       <br>
-      <!--
-      <video id="summary-video" class="shadow" controls preload="metadata" width="100%" poster="static/thumbnails/talk_video.jpg">
-        <source src="static/videos/talk_video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      -->
     </div>
   </section>
-
-  <!-- ===== Problem ===== -->
-  <!-- <section id="real-robot" class="section">
-    <div class="container is-max-desktop content-container">
-      <h2 class="title is-3 has-text-centered">Problem Formulation</h2>
-      <p class="has-text-justified">
-        We consider the mean estimation problem in policy evaluation, where the goal is to estimate the average performance of policy \(\pi\) according to a bounded evaluation metric \(M\) over the environment distribution \(\mathcal{D}_{\text{env}}\). Formally, we define mean policy performance \(\mu^*\) as:
-        \begin{equation}
-            \mu^* = \mathbb{E}_{X \sim \mathcal{D}_{\text{env}}} [Y(X)],
-        \end{equation}
-        where \(Y(X)=M(X,\pi)\) is the outcome of evaluating policy \(\pi\) in environment \(X\) under metric \(M\). For sampled environments \(X_1, \ldots, X_{n} \stackrel{{iid}}{\sim} \mathcal{D}_{\text{env}}\), the outcomes of real-world policy evaluation according to metric \(M\) are denoted as \(Y_1,\ldots,Y_n\), respectively. We seek a confidence interval \(CI\) such that: 
-      \begin{equation}
-      \label{eq:guarantee}
-      \mathbb{P}_{S_n \sim \mathcal{D}^{n}_{\text{env}}} (\mu^* \in CI) \geq 1 - \alpha,
-      \end{equation}
-      where the probability measure is defined over the draw of the empirical evaluation sample \(S_n = \{(X_1, Y_1), \ldots , (X_n, Y_n)\}\).
-      </p>
-      <br>
-    </div> 
-  </section> -->
 
   <!-- ===== Approach ===== -->
   <section id="real-robot" class="section">
@@ -214,9 +177,12 @@
       <p class="has-text-justified">
         We would like to estimate expected performance of a policy \(\pi\) according to a bounded evaluation metric \(M\) over some distribution of tasks and environments \(\mathcal{D}_{\text{env}}\). 
         While gold-standard, tackling this problem using only real-world evaluations is often expensive and time-consuming. On the other hand, simulation evaluations are relatively easier to scale, but can be biased, leading to inaccurate estimates of real-world performance.
+        </p>
+        <p class="has-text-justified">
         This motivates the central question of our work: <em> Can we make valid inferences on the real-world performance of a policy by combining a small amount of real evaluations with a large number of simulations?</em>
         To answer this question, we present <span class="has-text-weight-bold">SureSim: </span><span class="has-text-weight-bold">S</span>calable and <span class="has-text-weight-bold">R</span>eliable <span class="has-text-weight-bold">E</span>valuation with <span class="has-text-weight-bold">Sim</span>ulation.
-
+        </p>
+        
         <h3 class="title is-4 has-text-centered">Paired evaluations</h3>
           <p>We set up a real2sim pipeline to collect a small number of paired evaluations in both real and simulation environments. 
             This paired dataset allows us to quantify the bias in simulation evaluations and <em>rectify</em> predictions from large-scale simulations.
@@ -225,7 +191,7 @@
 
         <h3 class="title is-4 has-text-centered">Additional simulation evaluations</h3>
           <p>Relative to the size of the paired dataset, we collect a large number of additional simulations. By running large-scale simulation tests </p>
-      </p>
+      
       <br>
     </div> 
   </section>
@@ -249,15 +215,6 @@
   </section>
 
   <!-- ===== SIm2SIm EXPERIMENTS ===== -->
-  <!-- 
-    <section id="sim-robot" class="section">
-    <div class="container is-max-desktop content-container">
-      <h2 class="title is-3 has-text-centered">Sim2Sim Experiments</h2>
-      <p>We evaluate our method on three simulation tasks: Put Tomato in Plate, Peg Insertion and Pull Cube Tool.
-      </p> 
-      </div>
-    </section> 
-  -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">Acknowledgments</h2>
@@ -265,28 +222,6 @@
         </p>
     </div>
   </section>
-  <!-- <section class="section" id="BibTeX">
-      <div class="container is-max-desktop content">
-          <h2 class="title">Citation</h2>
-              <textarea id="bibtex" class="form-control" rows="7" readonly>
-    @inproceedings{step2025,
-        title = {Is {Your} {Imitation} {Learning} {Policy} {Better} than {Mine}? {Policy} {Comparison} with {Near}-{Optimal} {Stopping}},
-        author = {Snyder, David and Hancock, Asher James and Badithela, Apurva and Dixon, Emma and Miller, Patrick and Ambrus, Rares Andrei and Majumdar, Anirudha and Itkina, Masha and Nishimura, Haruki},
-        booktitle={arXiv preprint arXiv:2503.10966}
-        year = {2025},
-}   </textarea>
-      </div>
-  </section> -->
-  <!--
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>
-        # Put bib citation here
-      </code></pre>
-    </div>
-  </section>
-  -->
   <br>
   <center class="is-size-10">
     The website design was adapted from <a href="https://nerfies.github.io" class="external-link"><span
