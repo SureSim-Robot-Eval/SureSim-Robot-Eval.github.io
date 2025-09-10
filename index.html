@@ -178,19 +178,19 @@
         We would like to estimate expected performance of a policy \(\pi\) according to a bounded evaluation metric \(M\) over some distribution of tasks and environments \(\mathcal{D}_{\text{env}}\). 
         While gold-standard, tackling this problem using only real-world evaluations is often expensive and time-consuming. On the other hand, simulation evaluations are relatively easier to scale, but can be biased, leading to inaccurate estimates of real-world performance.
         </p>
-        <p class="has-text-justified">
+        <p class="has-text-justified mb-5">
         This motivates the central question of our work: <em> Can we make valid inferences on the real-world performance of a policy by combining a small amount of real evaluations with a large number of simulations?</em>
         To answer this question, we present <span class="has-text-weight-bold">SureSim: </span><span class="has-text-weight-bold">S</span>calable and <span class="has-text-weight-bold">R</span>eliable <span class="has-text-weight-bold">E</span>valuation with <span class="has-text-weight-bold">Sim</span>ulation.
         </p>
         
-        <h3 class="title is-4 has-text-centered">Paired evaluations</h3>
-          <p>We set up a real2sim pipeline to collect a small number of paired evaluations in both real and simulation environments. 
+        <h3 class="title is-4 has-text-centered mt-6">Paired evaluations</h3>
+          <p class="mb-5">We set up a real2sim pipeline to collect a small number of paired evaluations in both real and simulation environments. 
             This paired dataset allows us to quantify the bias in simulation evaluations and <em>rectify</em> predictions from large-scale simulations.
             Importantly, the rectifier is related to the correlation between the paired real and simulation evaluations. In a sense, it quantifies the real-simulation gap and provides a lower bound on the advantage 
             (e.g., minimizing confidence interval width, saving hardware evaluations) we can expect from scaling simulation. If the rectifier variance is smaller than the variance in real evaluations, we can expect to save on real-world evaluations.</p>
 
-        <h3 class="title is-4 has-text-centered">Additional simulation evaluations</h3>
-          <p>Relative to the size of the paired dataset, we collect a large number of additional simulations. By running large-scale simulation tests </p>
+        <h3 class="title is-4 has-text-centered mt-6">Additional simulation evaluations</h3>
+          <p class="mb-5">Relative to the size of the paired dataset, we collect a large number of additional simulations. By running large-scale simulation tests </p>
       
       <br>
     </div> 
@@ -210,7 +210,6 @@
         <source src="static/videos/experiment_setup.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <p style="margin-top:1rem;">Experimental Setup.</p>
     </div>
   </section>
 
