@@ -149,7 +149,6 @@
   <!-- ===== OVERVIEW ===== -->
   <section id="overview" class="section">
     <div class="container is-max-desktop content-container has-text-centered">
-      <img src="static/overview.png" alt="Overview Figure" class="overview-image" />
       <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
         <source src="static/videos/overview.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -213,9 +212,9 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Approach: Augmenting Real Tests with Simulation via Prediction Powered Inference</h2>
       <p class="has-text-justified">
-        We would like to estimate expected performance of a policy \(\pi\) according to a bounded evaluation metric \(M\) over the environment distribution \(\mathcal{D}_{\text{env}}\). 
+        We would like to estimate expected performance of a policy \(\pi\) according to a bounded evaluation metric \(M\) over some distribution of tasks and environments \(\mathcal{D}_{\text{env}}\). 
         While gold-standard, tackling this problem using only real-world evaluations is often expensive and time-consuming. On the other hand, simulation evaluations are relatively easier to scale, but can be biased, leading to inaccurate estimates of real-world performance.
-        This motivates the central question of our work: <em> Can we make valid inferences on real policy performance by combining a small amount of real evaluations with a large number of simulations?</em>
+        This motivates the central question of our work: <em> Can we make valid inferences on the real-world performance of a policy by combining a small amount of real evaluations with a large number of simulations?</em>
         
         <h3 class="title is-4 has-text-centered">Paired evaluations</h3>
           <p>We set up a real2sim pipeline to collect a small number of paired evaluations in both real and simulation environments. 
@@ -239,6 +238,15 @@
       </p>
       <br>
     </div> 
+    <div class="container is-max-desktop content-container has-text-centered">
+      <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
+        <source src="static/videos/experiment_setup.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:1rem;">Our goal is to evaluate a policy by computing bounds on its mean real-world performance on a diverse environment distribution \(\mathcal{D}_{\text{env}}\). We present a framework that augments real-world evaluations with simulation evaluations to provide stronger inferences on real-world policy performance that could otherwise only be obtained by scaling up real-world evaluations.</p>
+      <!-- <figcaption style="margin-top:0.25rem;">
+      </figcaption> -->
+    </div>
   </section>
 
   <!-- ===== SIm2SIm EXPERIMENTS ===== -->
