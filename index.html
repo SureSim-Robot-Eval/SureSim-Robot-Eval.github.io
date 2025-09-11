@@ -55,7 +55,7 @@
     .video-thumb video{width:100%;height:auto;display:block;}
 
     /* --- STAND‑ALONE VIDEOS --- */
-    .overview-video,.sim-video{width:50%;height:auto;border-radius:0;box-shadow:none;pointer-events:none;}
+    .overview-video,.sim-video{width:100%;height:auto;border-radius:0;box-shadow:none;pointer-events:none;}
 
     /* --- LAYOUT HELPERS --- */
     .task-block{margin-bottom:3rem;}
@@ -168,10 +168,12 @@
       </p>
       <br>
     </div>
-    <video class="overview-video" width="1000" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
-        <source src="static/videos/fast_policy_eval.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-    </video>
+    <div class="col-md-12">
+      <video class="overview-video" width="1000" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
+          <source src="static/videos/fast_policy_eval.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+      </video>
+    </div>
   </section>
    
   <!-- ===== Approach ===== -->
