@@ -55,7 +55,7 @@
     .video-thumb video{width:100%;height:auto;display:block;}
 
     /* --- STAND‑ALONE VIDEOS --- */
-    .overview-video,.sim-video{width:100%;height:auto;border-radius:0;box-shadow:none;pointer-events:none;}
+    .overview-video,.sim-video{width:50%;height:auto;border-radius:0;box-shadow:none;pointer-events:none;}
 
     /* --- LAYOUT HELPERS --- */
     .task-block{margin-bottom:3rem;}
@@ -222,13 +222,14 @@
         <source src="static/videos/experiment_setup.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+    </div>
       <!-- <figure style="text-align: center; margin: 20px 0;">
         <img src="static/thumbnails/experiment_overview.png" alt="Sample photo" width="400" style="border: 2px solid #ccc; border-radius: 8px;">
         <figcaption style="font-size: 0.9em; color: #555; margin-top: 8px;">
           Evaluation Setup
         </figcaption>
       </figure> -->
-    </div>
+    <div class="container is-max-desktop content-container">
     <h3 class="title is-4 has-text-centered mt-6">SureSim requires fewer hardware evaluations</h3>
         <p class="has-text-justified mb-5">Compared to obtaining confidence intervals with real-world only trials, SureSim leverages simulation effectively, requiring fewer hardware evaluations to achieve similar bounds.</p>
           <br>
@@ -244,6 +245,7 @@
           <figure style="text-align: center; margin: 20px 0;">
             <img src="static/thumbnails/diffusion_policy_savings.png" alt="Sample photo" width="1000" style="border: 2px solid #ccc; border-radius: 8px;">
           </figure>
+    </div>
   </section>
 
   <section class="section" id="BibTeX">
