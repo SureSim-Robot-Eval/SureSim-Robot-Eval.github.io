@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="icon" href="./static/icon.png" />
+  <!--<link rel="icon" href="./static/evalicon.png" />-->
 
   <!--  =====  CSS  =====  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" />
@@ -112,13 +112,13 @@
           </div>
         </div>
         <p>
-          <sup>*</sup> Equal contribution, <sup>&dagger;</sup> Equal advising
+          <sup>*</sup> Equal contribution, <sup>&dagger;</sup> Equal contribution
         </p>
         <!-- ===== RESOURCE ICONS ===== -->
         <div class="publication-links">
-          <a href="static/paper.pdf" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+          <a href="https://arxiv.org/pdf/2510.04354" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
             <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
-          </a>
+          </a> 
           <!--
           <a href="https://arxiv.org/abs/2505.07728" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
             <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
@@ -152,24 +152,16 @@
   <!-- ===== OVERVIEW ===== -->
   <section id="overview" class="section">
     <div class="container is-max-desktop content-container has-text-centered">
-      <img src="static/overview.png" alt="Overview Figure" class="overview-image" />
-      <p style="margin-top:1rem;">
-        Our goal is to evaluate a policy by computing bounds on its mean real-world performance on a diverse environment distribution \(\mathcal{D}_{\text{env}}\). We present a framework that augments real-world evaluations with simulation evaluations to provide stronger inferences on real-world policy performance that could otherwise only be obtained by scaling up real-world evaluations.
-      </p>
-    </div>
-  </section>
-
-  <!--
-  <section id="overview" class="section">
-    <div class="container is-max-desktop content-container has-text-centered">
-      <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.jpg">
+      <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
         <source src="static/videos/overview.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <p style="margin-top:1rem;">We introduce <strong>Factored&nbsp;Scaling&nbsp;Curves&nbsp;(FSC)</strong>, which model how policy performance scales with data for different environmental factors and can be extrapolated to guide principled data collection.</p>
+      <p style="margin-top:1rem;">Our goal is to evaluate a policy by computing bounds on its mean real-world performance on a diverse environment distribution \(\mathcal{D}_{\text{env}}\). We present a framework that augments real-world evaluations with simulation evaluations to provide stronger inferences on real-world policy performance that could otherwise only be obtained by scaling up real-world evaluations.</p>
+      <!-- <figcaption style="margin-top:0.25rem;">
+      </figcaption> -->
     </div>
   </section>
-  -->
+
   <!-- ===== ABSTRACT ===== -->
   <section id="abstract" class="section">
     <div class="container is-max-desktop content-container">
@@ -178,43 +170,50 @@
         Rapid progress in robot manipulation driven by imitation learning, foundation models, and large-scale datasets has enabled generalization to a wide-range of tasks and environments. However, rigorous evaluation of these policies remains a challenge. Typically in practice, robot policies are often evaluated on a small number of hardware trials without any statistical assurances. We present SureSim, a framework to augment large-scale simulation with relatively small-scale real-world testing to provide reliable inferences on the real-world performance of a policy. Our key idea is to formalize the problem of combining real and simulation evaluations as a prediction-powered inference problem, in which a small number of paired real and simulation evaluations are used to rectify bias in large-scale simulation. We then leverage non-asymptotic mean estimation algorithms to provide confidence intervals on policy performance. Using physics-based simulation, we evaluate both diffusion policy and multi-task fine-tuned \(\pi_0\) on a joint distribution of objects and initial conditions, and find that our approach saves over \(20\%\) of hardware evaluation effort to achieve similar bounds on policy performance. 
       </p>
       <br>
-      <!--
-      <video id="summary-video" class="shadow" controls preload="metadata" width="100%" poster="static/thumbnails/talk_video.jpg">
-        <source src="static/videos/talk_video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+    </div>
+    <div class="container is-max-desktop content-container has-text-centered">
+      <video class="overview-video" width="1000" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
+          <source src="static/videos/fast_policy_eval.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
       </video>
-      -->
     </div>
   </section>
-
-  <!-- ===== Problem ===== -->
-  <section id="real-robot" class="section">
-    <div class="container is-max-desktop content-container">
-      <h2 class="title is-3 has-text-centered">Problem Formulation</h2>
-      <p class="has-text-justified">
-        We consider the mean estimation problem in policy evaluation, where the goal is to estimate the policy’s average performance according to a bounded evaluation metric \(M\) over the environment distribution \(\Denv\). Formally, we define mean policy performance \(\mu^*\) as:
-        \begin{equation}
-            \mu^* = \mathbb{E}_{X \sim \Denv} [Y(X)],
-        \end{equation}
-        where \(Y(X)=M(X,\pi)\) is the outcome of evaluating policy \(\pi\) in environment \(X\) under metric \(M\). For sampled environments \(X_1, \ldots, X_{n} \iidsim \Denv\), the outcomes of real-world policy evaluation according to metric \(M\) are denoted as \(Y_1,\ldots,Y_n\), respectively. We seek a confidence interval \(CI\) such that: 
-      \begin{equation}
-      \label{eq:guarantee}
-      \Prob_{S_n \sim \mathcal{D}^{n}_{\text{env}}} (\mu^* \in CI) \geq 1 - \alpha,
-      \end{equation}
-      where the probability measure is defined over the draw of the empirical evaluation sample \(S_n = \{(X_1, Y_1), \ldots , (X_n, Y_n)\}\).
-      </p>
-      <br>
-    </div> 
-  </section>
-
+   
   <!-- ===== Approach ===== -->
   <section id="real-robot" class="section">
     <div class="container is-max-desktop content-container">
-      <h2 class="title is-3 has-text-centered">Approach: Simulation to Augment Real Tests via Prediction Powered Inference</h2>
-      <p class="has-text-justified">
-        Using our framework, we evaluate diffusion policy and a multi-task fine-tuned \(\pi_0\) on a joint distribution of tasks and initial conditions.
+      <h2 class="title is-3 has-text-centered">Approach: Augmenting Real Tests with Simulation via Prediction Powered Inference</h2>
+      <p class="has-text-justified mb-5">
+        We would like to estimate expected performance of a policy \(\pi\) according to a bounded evaluation metric \(M\) over some distribution of tasks and environments \(\mathcal{D}_{\text{env}}\). 
+        While gold-standard, tackling this problem using only real-world evaluations is often expensive and time-consuming. On the other hand, simulation evaluations are relatively easier to scale, but can be biased, leading to inaccurate estimates of real-world performance.
       </p>
-      <br>
+
+      <p class="has-text-justified mb-5">
+      This motivates the central question of our work: <em> Can we make valid inferences on the real-world performance of a policy by combining a small amount of real evaluations with a large number of simulations?</em>
+      To answer this question, we present <span class="has-text-weight-bold">SureSim: </span><span class="has-text-weight-bold">S</span>calable and <span class="has-text-weight-bold">R</span>eliable <span class="has-text-weight-bold">E</span>valuation with <span class="has-text-weight-bold">Sim</span>ulation.
+      </p>
+        
+      <h3 class="title is-4 has-text-centered mt-6">Paired evaluations</h3>
+        <p class="mb-5">We set up a real2sim pipeline to collect a small number of paired evaluations in both real and simulation environments. 
+          This paired dataset allows us to quantify the bias in simulation evaluations and <em>rectify</em> predictions from large-scale simulations.
+          Importantly, the rectifier is related to the correlation between the paired real and simulation evaluations. In a sense, it quantifies the real-simulation gap and provides a lower bound on the advantage 
+          (e.g., minimizing confidence interval width, saving hardware evaluations) we can expect from scaling simulation. If the rectifier variance is smaller than the variance in real evaluations, we can expect to save on real-world evaluations.</p>
+          <br>
+          <div class="container is-max-desktop content-container has-text-centered">
+            <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/paired_evals.png">
+              <source src="static/videos/paired_evals.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+      <h3 class="title is-4 has-text-centered mt-6">Additional simulation evaluations</h3>
+        <p class="mb-5">Relative to the size of the paired dataset, we collect a large number of additional simulations. By running large-scale simulation tests, we can further improve the accuracy of our performance estimates.</p>
+        <br>
+        <div class="container is-max-desktop content-container has-text-centered">
+          <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/additional_sim.png">
+            <source src="static/videos/additional_sim.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
     </div> 
   </section>
 
@@ -223,31 +222,64 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Real2Sim Experiments</h2>
       <p class="has-text-justified">
-        Using our framework, we evaluate diffusion policy and a multi-task fine-tuned \(\pi_0\) on a joint distribution of tasks and initial conditions.
+        Using our framework, we evaluate diffusion policy and a multi-task fine-tuned \(\pi_0\) on a joint distribution of tasks and initial conditions. We choose the pick-and-place family of tasks, parameterized by different object types.
       </p>
       <br>
     </div> 
-  </section>
-
-  <!-- ===== SIm2SIm EXPERIMENTS ===== -->
-  <section id="sim-robot" class="section">
+    <div class="container is-max-desktop content-container has-text-centered">
+      <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
+        <source src="static/videos/experiment_setup.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+      <!-- <figure style="text-align: center; margin: 20px 0;">
+        <img src="static/thumbnails/experiment_overview.png" alt="Sample photo" width="400" style="border: 2px solid #ccc; border-radius: 8px;">
+        <figcaption style="font-size: 0.9em; color: #555; margin-top: 8px;">
+          Evaluation Setup
+        </figcaption>
+      </figure> -->
     <div class="container is-max-desktop content-container">
-      <h2 class="title is-3 has-text-centered">Sim2Sim Experiments</h2>
-      <!-- <p>We evaluate our method on three simulation tasks: Put Tomato in Plate, Peg Insertion and Pull Cube Tool.
-      </p> -->
-      <br>
-  </section>
+      <h3 class="title is-4 has-text-centered mt-6">SureSim requires fewer hardware evaluations</h3>
+          <p class="mb-5">Compared to obtaining confidence intervals with real-world only trials, SureSim leverages simulation effectively, requiring fewer hardware evaluations to achieve similar bounds.
+            SureSim saves 20 - 25% hardware evaluations to get similar bounds on policy performance.
+          </p>
+            <br></div> 
+            <figure style="text-align: center; margin: 20px 0;">
+              <img src="static/thumbnails/saving.png" alt="Sample photo" width="1000" style="border-radius: 8px;">
+            </figure>
+    <div class="container is-max-desktop content-container">
+      <h3 class="title is-4 has-text-centered mt-6">SureSim illustrates the advantage of scaling simulation evaluations</h3>
+          <p class="mb-5"> Instead of scaling up hardware evaluations, we can scale up simulation evaluations up to the limit of the real-simulation gap. </p>
+            <br></div>
+            <figure style="text-align: center; margin: 20px 0;">
+                <img src="static/thumbnails/diffusion_policy_savings.png" alt="Sample photo" width="800" style="border-radius: 8px;">
+            </figure>
+            <div class="container is-max-desktop content-container has-text-centered">
+              <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overview.png">
+                <source src="static/videos/scaling.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+    </div>
 
-  <!--
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>
-        # Put bib citation here
-      </code></pre>
+    <div class="container is-max-desktop content-container">
+      <h3 class="title is-4 has-text-centered mt-6">SureSim is robust to large real-simulation mismatch</h3>
+          <p class="mb-5"> In low correlation settings, real-world-only evaluation gives the tightest bounds on policy performance. SureSim is effective when simulation is more predictive of real-world performance than the variance in real data.
+            Yet, even under high real-simulation mismatch, SureSim returns reliable confidence intervals. Moreover, we can check for the level of mismatch before investing computational effort in scaling simulation. </p>
+            <br></div>
+            <figure style="text-align: center; margin: 20px 0;">
+              <img src="static/thumbnails/low_corr.png" alt="Sample photo" width="800" style="border-radius: 8px;">
+            </figure>
     </div>
   </section>
-  -->
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgments</h2>
+        <p>The authors would like to thank Tijana Zrnic, Anastasios Angelopoulos, and Allen Z. Ren for insightful discussions. The authors were partially supported by the NSF CAREER Award \(\#2044149\), the Office of Naval Research (N00014-23-1-2148), and the Sloan Fellowship. A. Badithela is supported by the Presidential Postdoctoral Fellowship at Princeton University.
+        </p>
+    </div>
+  </section>
   <br>
   <center class="is-size-10">
     The website design was adapted from <a href="https://nerfies.github.io" class="external-link"><span
